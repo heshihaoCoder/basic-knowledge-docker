@@ -68,3 +68,19 @@ docker run -it --name=c3 -v /volume centos:7 /bin/bash   （/volume是容器目�
 ```
 docker run -it --name=c1 --volume-from c3 centos:7
 ```
+
+## Dockerfile
+
+**此文件是用来制作 docker 镜像的**
+
+### Docker 镜像原理
+
+1. Docker 镜像是由特殊的文件系统叠加而成
+2. 最低端是 bootfs，并使用宿主机的 bootfs
+3. 第二层是 root 文件系统 rootfs，称之为 base image（基础镜像
+4. 在往上可以叠加其他的镜像文件
+5. 这种叠加的操作称之为统一文件系统(Union File System)技术能够将不同的层整合为一个文件系统。为这些层提供了一个统一的视角，这样就隐藏了多层的存在，在用户的角度看来，只存在一个文件系统。
+6. 一个镜像可以放在另一个镜像的上面。位于下面的镜像称之为父镜像，最低部的称为基础镜像。
+7. 当从一个镜像启动容器时，Docker 会在最顶层加载一个读写文件系统作为容器
+
+### Docker 镜像制作
