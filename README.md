@@ -84,3 +84,23 @@ docker run -it --name=c1 --volume-from c3 centos:7
 7. 当从一个镜像启动容器时，Docker 会在最顶层加载一个读写文件系统作为容器
 
 ### Docker 镜像制作
+1. 容器转为镜像
+   ```
+   docker commit 容器id 镜像名称:版本号
+   ```
+
+2. Dockerfile
+   - dockerfile是一个文本文件
+   - 包含了一条条的指令
+   - 每一个指令构建一层，基于基础镜像，最终构建出一个新的镜像
+
+
+## Docker服务编排
+`服务编排: 按照一定的业务规则批量管理容器`
+
+### Docker Compose
+Docker Compose是一个编排多容器分布式部署的工具，提供命令集管理容器化应用的的完整开发周期，包括服务构建，启动和停止，删除。使用步骤：
+
+1. 通过Dockerfile运行自定义环境。
+2. 使用docker-compose.yml定义组成应用的各服务。
+3. 运行conker-compose up 启动应用
